@@ -43,7 +43,7 @@ Now we can retrieve each cluster's centroid (the average meaning amongts its poi
 
 ```PHP
 foreach ($clusters as $i => $cluster)
-    printf("Cluster %d [%d,%d]: %d points\n", $i, $cluster[0], $cluster[1], count($cluster));
+    printf("Cluster %d [%f,%f]: %d points\n", $i, $cluster[0], $cluster[1], count($cluster));
 ```
 
 Example of output:
@@ -111,6 +111,6 @@ $clusters = $space->solve(3, KMeans\Space::SEED_DEFAULT, function($space, $clust
     printf("Iteration: %d\n", ++$iterations);
 
     foreach ($clusters as $i => $cluster)
-        printf("Cluster %d [%d,%d]: %d points\n", $i, $cluster[0], $cluster[1], count($cluster));
+        printf("Cluster %d [%f,%f]: %d points\n", $i, $cluster[0], $cluster[1], count($cluster));
 });
 ```

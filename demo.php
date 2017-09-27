@@ -31,4 +31,4 @@ $clusters = $space->solve(3);
 
 // display the cluster centers and attached points
 foreach ($clusters as $i => $cluster)
-	printf("Cluster %s [%d,%d]: %d points\n", $i, $cluster[0], $cluster[1], count($cluster));
+	printf("Cluster %s [%f,%f]: %d points\n", $i, $cluster[0], $cluster[1], count($cluster));

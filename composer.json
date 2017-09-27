@@ -1,5 +1,5 @@
 {
-    "name": "bdelespierre/php-kmeans",
+    "name": "chris-lu/php-kmeans",
     "type": "library",
     "description": "K-Means algorithm for PHP",
     "keywords": ["php", "kmeans", "kmeans plus plus", "utility"],
