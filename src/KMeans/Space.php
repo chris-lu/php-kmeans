@@ -124,11 +124,6 @@ class Space extends SplObjectStorage
         // initialize K clusters
         $clusters = $this->initializeClusters($nbClusters, $seed);
 
-        // there's only one cluster, clusterization has no meaning
-        if (count($clusters) == 1) {
-            return $clusters[0];
-        }
-
         // until convergence is reached
         do {
             $iterationCallback && $iterationCallback($this, $clusters);

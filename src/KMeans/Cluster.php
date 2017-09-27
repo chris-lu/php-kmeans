@@ -98,6 +98,16 @@ class Cluster extends Point implements IteratorAggregate, Countable
         }
     }
 
+    public function getSSE(){
+        $sse = 0;
+
+        foreach ($this->points as $point) {
+            $sse += $this->getDistanceWith($point, false);
+        }
+
+        return $sse;
+    }
+
     public function getIterator()
     {
         return $this->points;
