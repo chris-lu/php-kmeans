@@ -243,7 +243,7 @@ class Space extends SplObjectStorage
 
         $distance = 0;
         for ($n = 0; $n < $this->dimension; $n++) {
-            $difference = $point1->coordinates[$n] - $point2->coordinates[$n];
+            $difference = $point1[$n] - $point2[$n];
             $distance += $difference * $difference;
         }
 
