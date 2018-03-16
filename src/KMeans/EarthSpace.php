@@ -48,8 +48,7 @@ class EarthSpace extends Space
 
         $rad = M_PI / 180;
 
-        $distance = $this->scaling * (acos(sin($point2[0] * $rad) * sin($point1[0] * $rad) + cos($point2[0] * $rad) * cos($point1[0] * $rad) * cos($point2[1] * $rad - $point1[1] * $rad)) * 6371); // Kilometers
-
+        $distance = $this->scaling * (acos(min(max(sin($point2[0] * $rad) * sin($point1[0] * $rad) + cos($point2[0] * $rad) * cos($point1[0] * $rad) * cos($point2[1] * $rad - $point1[1] * $rad), -1.0), 1.0)) * 6371); // Kilometers
         return $precise ? $distance : pow($distance, 2);
     }
 
