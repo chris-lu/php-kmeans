@@ -155,7 +155,7 @@ class Space extends SplObjectStorage
             // the DASV seeding method consists of finding good initial centroids for the clusters
             case self::SEED_DASV:
                 // find a random point
-                $position   = rand(1, count($this));
+                $position = rand(1, count($this));
                 for ($i = 1, $this->rewind(); $i < $position && $this->valid(); $i++, $this->next()) ;
                 $clusters[] = new Cluster($this, $this->current()->getCoordinates());
 
@@ -173,7 +173,7 @@ class Space extends SplObjectStorage
                     }
 
                     // choose a new random point using a weighted probability distribution
-                    $sum = rand(0, $sum);
+                    $sum = rand(0, intval($sum));
                     foreach ($this as $point) {
                         if (($sum -= $distances[$point]) > 0) {
                             continue;
@@ -234,4 +234,20 @@ class Space extends SplObjectStorage
 
         return $continue;
     }
+
+    public function getDistance(Point $point1, Point $point2, $precise = true)
+    {
+        if ($point1->getSpace() !== $this || $point2->getSpace() !== $this) {
+            throw new LogicException("can only calculate distances from points in the same space");
+        }
+
+        $distance = 0;
+        for ($n = 0; $n < $this->dimension; $n++) {
+            $difference = $point1[$n] - $point2[$n];
+            $distance += $difference * $difference;
+        }
+
+        return $precise ? sqrt($distance) : $distance;
+    }
+
 }
